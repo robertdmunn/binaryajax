@@ -140,7 +140,7 @@ var BinaryAjax = (function() {
 		}
 	}
 
-	function sendRequest(url, callback, error, range, acceptRanges, fileSize) {
+	function sendRequest(url, callback, error, range, acceptRanges) {
 		var http = createRequest();
 		if (http) {
 
@@ -158,7 +158,6 @@ var BinaryAjax = (function() {
 					http.onload = function() {
 						if (http.status == "200" || http.status == "206" || http.status == "0") {
 							http.binaryResponse = new BinaryFile(http.responseText, dataOffset, dataLen);
-							http.fileSize = fileSize || http.getResponseHeader("Content-Length");
 							callback(http);
 						} else {
 							if (error) error();
@@ -173,8 +172,7 @@ var BinaryAjax = (function() {
 								var res = {
 									status : http.status,
 									// IE needs responseBody, Chrome/Safari needs responseText
-									binaryResponse : new BinaryFile(http.responseBody || http.responseText, dataOffset, dataLen),
-									fileSize : fileSize || http.getResponseHeader("Content-Length")
+									binaryResponse : new BinaryFile(http.responseBody || http.responseText, dataOffset, dataLen)
 								};
 								callback(res);
 							} else {
@@ -206,7 +204,6 @@ var BinaryAjax = (function() {
 			getHead(
 				url, 
 				function(http) {
-					var length = parseInt(http.getResponseHeader("Content-Length"),10);
 					var acceptRanges = http.getResponseHeader("Accept-Ranges");
 
 					var start, end;
@@ -215,7 +212,7 @@ var BinaryAjax = (function() {
 						start += length;
 					end = start + range[1] - 1;
 
-					sendRequest(url, callback, error, [start, end], (acceptRanges == "bytes"), length);
+					sendRequest(url, callback, error, [start, end], (acceptRanges == "bytes"));
 				}
 			);
 		} else {
