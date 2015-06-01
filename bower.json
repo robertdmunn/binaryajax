@@ -1,0 +1,27 @@
+{
+  "name": "binaryajax",
+  "main": "binaryajax.js",
+  "version": "0.2.0",
+  "homepage": "https://github.com/robertdmunn/binaryajax",
+  "authors": [
+    "Jacob Seidelin <cupboy@gmail.com>",
+    "vladferix <https://github.com/vladferix>"
+  ],
+  "description": "transfers binary data over ajax",
+  "keywords": [
+    "binary",
+    "ajax"
+  ],
+  "license": "Mozilla Public License",
+  "ignore": [
+    "**/.*",
+    "package.json",
+    "Gruntfile.js",
+    ".project",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "out"
+  ]
+}
