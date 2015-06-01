@@ -26,6 +26,7 @@
     "ajax"
   ],
   "author": [ "Jacob Seidelin, cupboy@gmail.com", 
-  			"vladferix <https://github.com/vladferix>"],
-  "license": "Mozilla Public LIcense"
+  			"vladferix <https://github.com/vladferix>",
+  			"Robert Munn <robert.d.munn@gmail.com>"],
+  "license": "Mozilla Public LIcense 2.0"
 }
